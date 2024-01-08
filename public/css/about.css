@@ -20,14 +20,31 @@ html {
     padding: 20px;
 }
 
+.header input {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.navbar{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+
 .navbar a {
-    padding: 5px;
+    padding: 0px  10px;
     color: #E51636;
     font-size: 1.1em;
     font-weight: 700;
     text-decoration: underline 0.1em rgba(0, 0, 0, 0);
     text-underline-offset: 0.2em;
     transition: 0.3s ease;
+}
+
+#login {
+    margin-left: auto;
 }
 
 .navbar a:hover {

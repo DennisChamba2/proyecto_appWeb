@@ -1,3 +1,8 @@
-const express = require("express")
-const morgan = require("morgan")
-const path = require("path")
+require("dotenv").config()
+
+const claseServer = require('./models/Server')
+
+const server = new claseServer();
+
+server.listen()
+
