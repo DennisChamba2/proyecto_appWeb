@@ -12,10 +12,14 @@ const about = (req = request, res = response) => {
   res.render('../public/views/about.hbs');
 };
 
+const formulario = (req = request, res = response) => {
+  res.render('../public/views/nuevoProducto.hbs');
+};
 
 
 module.exports = {
   general,
   menu,
-  about
+  about, 
+  formulario
 };
