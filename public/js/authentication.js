@@ -21,10 +21,11 @@ const db = getFirestore(app);
 async function registrarUsuario(username, password) {
     try {
         // Agrega un documento a la colección 'usuarios'
+        console.log("entre en registrarUsuario")
         const docRef = await addDoc(collection(db, "usuarios"), {
             username: username,
             password: password,
-            // Puedes incluir más campos según lo necesites
+            
         });
         console.log("Usuario registrado con ID:", docRef.id);
         // Aquí podrías redirigir a otra página o realizar alguna acción después de registrar al usuario

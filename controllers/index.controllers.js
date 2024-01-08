@@ -16,10 +16,15 @@ const formulario = (req = request, res = response) => {
   res.render('../public/views/nuevoProducto.hbs');
 };
 
+const signup = (req = request, res = response) => {
+  res.render('../public/views/signup.hbs');
+};
+
 
 module.exports = {
   general,
   menu,
   about, 
-  formulario
+  formulario,
+  signup,
 };

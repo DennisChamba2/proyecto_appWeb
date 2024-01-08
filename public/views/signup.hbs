@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chick-fil-A Menu</title>
-    <link rel="stylesheet" href="./css/menu.css">
-    <script src="./js/script.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="./css/sign.css">
+    <script src="./js/authentication" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/4cf78acc70.js" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -15,7 +15,7 @@
 <body>
     <div class="signup-container">
         <h1>Signup</h1>
-        <form action="/signup" method="post">
+        <form id="signup-form" action="/signup" method="post">
             <!-- Aquí se especificaría la ruta y el método para procesar el formulario -->
             <div class="form-group">
                 <label for="username">Username</label>
