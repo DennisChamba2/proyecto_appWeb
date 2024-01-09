@@ -20,6 +20,10 @@ const signup = (req = request, res = response) => {
   res.render('../public/views/signup.hbs');
 };
 
+const registroFormulario = (req = request, res = response) =>{
+  console.log(req.body);
+}
+
 
 module.exports = {
   general,
@@ -27,4 +31,5 @@ module.exports = {
   about, 
   formulario,
   signup,
+  registroFormulario
 };

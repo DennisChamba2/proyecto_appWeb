@@ -15,8 +15,14 @@ class Server {
   }
 
   middlewares(){
+
+    // Middleware para parsear datos codificados en URL en el cuerpo de la solicitud
+    this.app.use(express.urlencoded({ extended: true }));
+
     //parceo y lectura de body
     this.app.use(express.json())
+
+    this.app.use(express.text())
 
     //plantillas
     this.app.set("view engine", "hbs")
