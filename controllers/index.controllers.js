@@ -22,6 +22,9 @@ const signup = (req = request, res = response) => {
 
 const registroFormulario = (req = request, res = response) =>{
   console.log(req.body);
+  console.log(req.files);
+
+  res.json({das: "sdas"})
 }
 
 

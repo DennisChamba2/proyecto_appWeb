@@ -1,4 +1,5 @@
 const express = require("express");
+const fileUpload = require("express-fileupload")
 
 class Server {
   constructor() {
@@ -15,9 +16,14 @@ class Server {
   }
 
   middlewares(){
-
+    
+    //fileupload 
+    this.app.use(fileUpload({
+      useTempFiles: true,
+      tempFileDir: '/tmp/'
+    }))
     // Middleware para parsear datos codificados en URL en el cuerpo de la solicitud
-    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(express.urlencoded({ extended: false }));
 
     //parceo y lectura de body
     this.app.use(express.json())
@@ -29,6 +35,8 @@ class Server {
 
     //directorio publico
     this.app.use(express.static('public'))
+
+
   }
 
   routes() {

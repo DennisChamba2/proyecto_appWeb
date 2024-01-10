@@ -23,7 +23,7 @@
 
     <div class="form-container">
         <h1>Ingresa un Nuevo Producto</h1>
-        <form action="#" method="post" id="formulario">
+        <form action="#" method="post" id="formulario"  enctype="multipart/form-data">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
 
@@ -36,7 +36,7 @@
             <label for="foto">Foto:</label>
             <input type="file" id="foto" name="foto" accept="image/*" required>
 
-            <button type="submit">Agregar Producto</button>
+            <button type="submit" id="enviarBtn">Agregar Producto</button>
         </form>
     </div>
 
@@ -52,41 +52,25 @@
     </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Identificar el formulario
-        const form = document.getElementById("formulario");
+     const enviarBtn = document.getElementById("enviarBtn");
 
-        // Reconocer el evento submit del formulario
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            // Crear un objeto FormData para manejar el formulario
-            const formData = new FormData(form);
-
-            // Realizar la solicitud POST al servidor
-            fetch('/producto', {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Respuesta del servidor:', data);
-
-                // Puedes hacer algo con la respuesta del servidor aquí
-                // Por ejemplo, redireccionar a una página diferente
-                if (data.success) {
-                    window.alert('Ingreso exitoso');
-                    document.location.href = '/logueado';
-                } else {
-                    window.alert('Error en el ingreso');
-                }
-            })
-            .catch(error => {
-                console.error('Error en la solicitud:', error);
-            });
-        });
-    });
+            enviarBtn.addEventListener("click", function () {
+                const formData = new FormData(form);
+                fetch('/producto', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Respuesta del servidor:', data);
+                    // Hacer algo con la respuesta del servidor aquí
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud:', error);
+                });
 </script>
+
+
 </body>
 
 </html>
