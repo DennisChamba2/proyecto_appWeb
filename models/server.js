@@ -1,5 +1,6 @@
 const express = require("express");
 const fileUpload = require("express-fileupload")
+const cors = require('cors');
 
 class Server {
   constructor() {
@@ -17,18 +18,21 @@ class Server {
 
   middlewares(){
     
+    this.app.use(cors());
+    
+    // Middleware para parsear datos codificados en URL en el cuerpo de la solicitud
+    this.app.use(express.urlencoded({ extended: true }));
+
+    //parceo y lectura de body
+    this.app.use(express.json()) 
+    this.app.use(express.text())
+
+
     //fileupload 
     this.app.use(fileUpload({
       useTempFiles: true,
       tempFileDir: '/tmp/'
     }))
-    // Middleware para parsear datos codificados en URL en el cuerpo de la solicitud
-    this.app.use(express.urlencoded({ extended: false }));
-
-    //parceo y lectura de body
-    this.app.use(express.json())
-
-    this.app.use(express.text())
 
     //plantillas
     this.app.set("view engine", "hbs")

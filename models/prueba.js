@@ -12,12 +12,22 @@ async function obtenerPlatillos() {
         //     foto:"dasdad"
         // };
 
+        //agregar un platillo
         // await db.collection("platillos").add(platilloNuevo)
         
+        //eliminar platillos
+        // await db.collection("platillos").doc("XJZd31uMilzSMWdQdkgK").delete()
+        
         const platillosSnapshot = (await db.collection("platillos").get());
+
+        platillosSnapshot.docs.forEach((x)=>{
+            console.log(x.data());
+            console.log(x.id);
+        })
+
         // Hacer algo con la referencia a la colección (por ejemplo, loggearla)
-        console.log(platillosSnapshot.docs[0].data()); // Accede a los documentos de la colección
-        console.log(platillosSnapshot.docs[0].id); // id del archivo
+        //console.log(platillosSnapshot.docs[0].data()); // Accede a los documentos de la colección
+        //console.log(platillosSnapshot.docs[0].id); // id del archivo
 
 
 
