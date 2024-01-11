@@ -20,6 +20,19 @@ html {
     padding: 20px;
 }
 
+.header input {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.navbar{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+
 .navbar a {
     padding: 5px;
     color: #E51636;
@@ -29,6 +42,11 @@ html {
     text-underline-offset: 0.2em;
     transition: 0.3s ease;
 }
+
+#login {
+    margin-left: auto;
+}
+
 
 .navbar a:hover {
     text-decoration-color: rgba(229, 22, 54, 1);

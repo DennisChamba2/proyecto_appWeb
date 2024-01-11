@@ -25,8 +25,10 @@ async function obtenerPlatillos() {
         //eliminar platillos
         // await db.collection("platillos").doc("XJZd31uMilzSMWdQdkgK").delete()
         
-        const platillosSnapshot = (await db.collection("platillos").get());
+        // const platillosSnapshot = (await db.collection("platillos").get());;
 
+        const credenciales = await (db.collection("usuariosAdmin").get())
+        console.log(credenciales.docs[0].data());
         // platillosSnapshot.docs.forEach((x)=>{
         //     console.log(x.data());
         //     console.log(x.id);

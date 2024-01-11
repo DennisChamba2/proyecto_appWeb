@@ -161,6 +161,24 @@ const login = (req = request, res = response)=>{
   res.render("../public/views/login.hbs")
 }
 
+const autenticacion = async(req = request, res = response)=>{
+  const { username, password } = req.body;
+  try {
+    const consulta = await (db.collection("usuariosAdmin").get())
+    const credenciales= consulta.docs[0].data()
+
+    if (username === credenciales.usuario && password === credenciales.password ){
+      res.send("1")
+    }else{
+      res.send("0")
+    }
+
+  } catch (error) {
+    res.send("0")
+  }
+}
+
+
 
 module.exports = {
   general,
@@ -174,5 +192,6 @@ module.exports = {
   mostrarProducto, 
   modificarProducto,
   chat, 
-  login
+  login,
+  autenticacion
 };
