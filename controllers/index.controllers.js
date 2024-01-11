@@ -24,6 +24,24 @@ const menu = async(req = request, res = response) => {
   res.render("../public/views/menu.hbs", {platillosGrupos});
 };
 
+const menuAdmin = async(req = request, res = response) => {
+  const platillosSnapshot = await db.collection("platillos").get()
+  const platillos = []
+
+
+  platillosSnapshot.forEach((doc) => {
+    platillos.push(doc.data());
+  });
+
+  // Agrupar los platillos en grupos de tres
+  const platillosGrupos = [];
+  for (let i = 0; i < platillos.length; i += 3) {
+    platillosGrupos.push(platillos.slice(i, i + 3));
+  }
+
+  res.render("../public/views/menuAdmin.hbs", {platillosGrupos});
+};
+
 const about = (req = request, res = response) => {
   res.render("../public/views/about.hbs");
 };
@@ -80,4 +98,5 @@ module.exports = {
   formulario,
   signup,
   registroFormulario,
+  menuAdmin
 };
