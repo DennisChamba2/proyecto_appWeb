@@ -1,5 +1,9 @@
 const { Router } = require("express");
-const { general, menu, about, formulario, signup, registroFormulario, menuAdmin, borrarMenu, chat} = require("../controllers/index.controllers");
+const { general, menu, 
+  about, formulario, 
+  signup, registroFormulario,
+   menuAdmin, borrarMenu,
+  mostrarProducto, modificarProducto} = require("../controllers/index.controllers");
 
 const router = Router()
 
@@ -8,8 +12,6 @@ const router = Router()
   router.get("/menu", menu);
 
   router.get("/about", about);
-
-  router.get("/chat", chat);
   
   router.get("/producto", formulario);
   
@@ -20,5 +22,9 @@ const router = Router()
   router.get("/menuA", menuAdmin);
   
   router.delete("/producto/:id", borrarMenu);
+
+  router.get("/producto/:id", mostrarProducto);
+
+  router.put("/producto/:id", modificarProducto);
 
 module.exports = router

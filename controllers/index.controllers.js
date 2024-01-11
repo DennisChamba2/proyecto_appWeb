@@ -104,6 +104,57 @@ const borrarMenu = async(req=request, res=response)=>{
   }
 }
 
+const mostrarProducto = async(req=request, res=response)=>{
+  const {id} = req.params
+  try {
+    const platilloDoc = await db.collection("platillos").doc(id).get();
+    const producto = platilloDoc.data()
+    res.render("../public/views/modificarProducto.hbs", {producto});
+  } catch (error) {
+    console.error("Error al cargar el platillo:", error);
+    res.header('Content-Type', 'application/json').send({ success: false });
+  }
+
+}
+
+
+const modificarProducto = async (req = request, res = response) => {
+  const { nombre, precio, descripcion } = req.body;
+  const { foto } = req.files;
+
+  //mover archivos cargados a carpeta updates
+  const uploadPath = path.join(__dirname, "../public/updates", foto.name);
+  const uploadPathFire = path.join("../updates", foto.name);
+
+  foto.mv(uploadPath, (err) => {
+    if (err) {
+      return res.status(500).json({ err });
+    }
+  });
+
+  const carga = async (nombre, precio, img, descripcion) => {
+    const platilloNuevo = {
+      nombre: nombre,
+      precio: Number(precio),
+      descripcion: descripcion,
+      foto: img.replace(/\\/g, "/"),
+    };
+    await db.collection("platillos").add(platilloNuevo);
+  };
+
+  try {
+    await carga(nombre, precio, uploadPathFire, descripcion);
+    res.header('Content-Type', 'application/json').send({ success: true });
+
+  } catch (error) {
+    console.error("Error al cargar el platillo:", error);
+    res.header('Content-Type', 'application/json').send({ success: false });
+  }
+
+};
+
+
+
 
 module.exports = {
   general,
@@ -114,5 +165,7 @@ module.exports = {
   registroFormulario,
   menuAdmin,
   borrarMenu,
+  mostrarProducto, 
+  modificarProducto,
   chat
 };
