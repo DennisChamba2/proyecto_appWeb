@@ -1,8 +1,8 @@
 // Función para modificar un platillo
 function modificarPlatillo(platilloId) {
-  // Lógica para modificar el platillo con el ID platilloId
-  // Puedes redirigir a una nueva página o abrir un modal de edición, por ejemplo
-  console.log(`Modificar platillo con ID: ${platilloId}`);
+  window.location.href = `/producto/${platilloId}`
+
+  
 }
 
 // Función para eliminar un platillo
