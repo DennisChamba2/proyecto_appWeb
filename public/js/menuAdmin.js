@@ -1,8 +1,6 @@
 // Función para modificar un platillo
 function modificarPlatillo(platilloId) {
   window.location.href = `/producto/${platilloId}`
-
-  
 }
 
 // Función para eliminar un platillo

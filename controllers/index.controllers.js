@@ -104,11 +104,16 @@ const borrarMenu = async(req=request, res=response)=>{
   }
 }
 
+
+
 const mostrarProducto = async(req=request, res=response)=>{
-  const {id} = req.params
+  const {id} = req.params   
   try {
     const platilloDoc = await db.collection("platillos").doc(id).get();
     const producto = platilloDoc.data()
+
+    producto.ide = id;
+    
     res.render("../public/views/modificarProducto.hbs", {producto});
   } catch (error) {
     console.error("Error al cargar el platillo:", error);
@@ -119,7 +124,9 @@ const mostrarProducto = async(req=request, res=response)=>{
 
 
 const modificarProducto = async (req = request, res = response) => {
-  const { nombre, precio, descripcion } = req.body;
+  const {id} = req.params
+  const { nombre, precio, descripcion} = req.body;
+  
   const { foto } = req.files;
 
   //mover archivos cargados a carpeta updates
@@ -139,7 +146,7 @@ const modificarProducto = async (req = request, res = response) => {
       descripcion: descripcion,
       foto: img.replace(/\\/g, "/"),
     };
-    await db.collection("platillos").add(platilloNuevo);
+    await db.collection("platillos").doc(id).update(platilloNuevo);
   };
 
   try {

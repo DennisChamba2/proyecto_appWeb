@@ -1,11 +1,12 @@
 const form = document.getElementById("formulario");
+const productoId = document.getElementById("platilloId").value;
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const formData = new FormData(form);
     
-    fetch('/producto', {
+    fetch(`/producto/${productoId}`, {
         method: 'PUT',
         body: formData
     })
@@ -17,7 +18,7 @@ form.addEventListener("submit", function (event) {
         console.log('Respuesta del servidor:', data);
 
         if (data.success === true) {
-            window.alert("Producto cargado exitosamente")
+            window.alert("Producto modificado exitosamente")
             document.location.href = '/menuA';
         } else {
             window.alert("Fallo al cargar el producto")
