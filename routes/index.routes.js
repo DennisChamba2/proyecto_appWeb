@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { general, menu, about, formulario, signup, registroFormulario, menuAdmin} = require("../controllers/index.controllers");
+const { general, menu, about, formulario, signup, registroFormulario, menuAdmin, borrarMenu} = require("../controllers/index.controllers");
 
 const router = Router()
 
@@ -16,5 +16,7 @@ const router = Router()
   router.post("/producto", registroFormulario);
   
   router.get("/menuA", menuAdmin);
+  
+  router.delete("/producto/:id", borrarMenu);
 
 module.exports = router

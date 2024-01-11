@@ -30,7 +30,7 @@ const menuAdmin = async(req = request, res = response) => {
 
 
   platillosSnapshot.forEach((doc) => {
-    platillos.push(doc.data());
+    platillos.push({ id: doc.id, ...doc.data() });
   });
 
   // Agrupar los platillos en grupos de tres
@@ -89,6 +89,16 @@ const registroFormulario = async (req = request, res = response) => {
 
 };
 
+const borrarMenu = async(req=request, res=response)=>{
+  const {id} = req.params
+  try {
+    await db.collection("platillos").doc(id).delete()
+    res.header('Content-Type', 'application/json').send({ success: true });
+  } catch (error) {
+    console.error("Error al cargar el platillo:", error);
+    res.header('Content-Type', 'application/json').send({ success: false });
+  }
+}
 
 
 module.exports = {
@@ -98,5 +108,6 @@ module.exports = {
   formulario,
   signup,
   registroFormulario,
-  menuAdmin
+  menuAdmin,
+  borrarMenu
 };
