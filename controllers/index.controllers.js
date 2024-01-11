@@ -54,6 +54,10 @@ const signup = (req = request, res = response) => {
   res.render("../public/views/signup.hbs");
 };
 
+const chat = (req = request, res = response) => {
+  res.render("../public/views/chat.hbs");
+};
+
 const registroFormulario = async (req = request, res = response) => {
   const { nombre, precio, descripcion } = req.body;
   const { foto } = req.files;
@@ -162,5 +166,6 @@ module.exports = {
   menuAdmin,
   borrarMenu,
   mostrarProducto, 
-  modificarProducto
+  modificarProducto,
+  chat
 };
