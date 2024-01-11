@@ -24,102 +24,20 @@
     <div class="menu">
         <h1>Menu</h1>
     </div>
-
+    {{#each platillosGrupos}}
     <div class="items">
-        <div class="row">
-            <div class="chicken">
-                <img src="img/Chicken Sand.png" alt="Chicken Sandwich" style="width: 100%;">
-               <a href="https://www.chick-fil-a.com/menu/chick-fil-a-chicken-sandwich" target="blank">Chicken Sandwich</a>
-                <h2>440 Cal</h2>
-            </div>
-            <div class="chicken">
-                <img src="img/Deluxe Sand.png" alt="Deluxe Chicken Sandwich" style="width: 100%;">
-                <a href="https://www.chick-fil-a.com/menu/chick-fil-a-deluxe-sandwich" target="blank">Deluxe Chicken Sandwich</a>
-                <h2>500 Cal</h2>
-            </div>
-            <div class="chicken">
-                <img src="img/spicy chic.png" alt="Spicy Chicken Sandwich" style="width: 100%;">
-                <a href="https://www.chick-fil-a.com/menu/spicy-chicken-sandwich" target="blank">Spicy Chicken Sandwich</a>
-                <h2>460 Cal</h2>
-            </div>
-        </div>
+      <div class="row">
+        {{#each this}}
+          <div class="chicken">
+            <img src="{{this.foto}}" alt="{{this.nombre}}" style="width: 100%;">
+            <a href="#" target="blank">{{this.nombre}}</a>
+            <h2>{{this.precio}} $</h2>
+          </div>
+        {{/each}}
+      </div>
     </div>
-
-    <div class="items">
-        <div class="row">
-            <div class="chicken">
-                <img src="img/Spicy deluxe.png" alt="Spicy Deluxe Chicken Sandwich" style="width: 100%;">
-                <a href="https://www.chick-fil-a.com/menu/spicy-deluxe-sandwich" target="blank">Spicy Deluxe Chicken Sandwich</a>
-                <h2>550 Cal</h2>
-            </div>
-            <div class="chicken">
-                <img src="img/Grilled.png" alt="Grilled Chicken Sandwich" style="width: 100%;">
-                <a href="https://www.chick-fil-a.com/menu/grilled-chicken-sandwich" target="blank">Grilled Chicken Sandwich</a>
-                <h2>380 Cal</h2>
-            </div>
-            <div class="chicken">
-                <img src="img/Grilled Club.png" alt="Grilled Chicken Club Sandwich" style="width: 100%;">
-                <a href="https://www.chick-fil-a.com/menu/chick-fil-a-grilled-chicken-club-sandwich" target="blank">Grilled Chicken Club Sandwich</a>
-                <h2>520 Cal</h2>
-            </div>
-        </div>
-    </div>
-
-    <div class="items">
-        <div class="row">
-            <div class="chicken">
-                <img src="img/nuggies.png" alt="Chicken Nuggets" style="width: 100%;">
-                <a href="https://www.chick-fil-a.com/menu/chick-fil-a-nuggets" target="blank">Chicken Nuggets</a>
-                <h2>250 Cal</h2>
-            </div>
-            <div class="chicken">
-                <img src="img/grill nuggs.png" alt="Grilled Nuggets" style="width: 100%;">
-                <a href="https://www.chick-fil-a.com/menu/grilled-nuggets" target="blank">Grilled Nuggets</a>
-                <h2>130 Cal</h2>
-            </div>
-            <div class="chicken">
-                <img src="img/Strips.png" alt="Chicken Strips" style="width: 100%;">
-                <a href="https://www.chick-fil-a.com/menu/chick-n-strips" target="blank">Chicken Strips</a>
-                <h2>310 Cal</h2>
-            </div>
-        </div>
-    </div>
-
-        <div class="items">
-            <div class="row">
-                <div class="chicken">
-                    <img src="img/wrap.png" alt="Cool Wrap" style="width: 100%;">
-                    <a href="https://www.chick-fil-a.com/menu/chick-fil-a-cool-wrap" target="blank">Cool Wrap</a>
-                    <h2>660 Cal</h2>
-                </div>
-                <div class="chicken">
-                    <img src="img/waffle.png" alt="Waffle Fries" style="width: 100%;">
-                    <a href="https://www.chick-fil-a.com/menu/chick-fil-a-waffle-potato-fries" target="blank">Waffle Fries</a>
-                    <h2 title="lol 420">420 Cal</h2>
-                </div>
-                <div class="chicken">
-                    <img src="img/mac.png" alt="Mac & Cheese" style="width: 100%;">
-                    <a href="https://www.chick-fil-a.com/menu/mac-cheese" target="blank">Mac & Cheese</a>
-                    <h2>450 Cal</h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="items">
-            <div class="row">
-                <div class="chicken">
-                    <img src="img/cookie.png" alt="Chocolate Chunk Cookie" style="width: 100%;">
-                    <a href="https://www.chick-fil-a.com/menu/chocolate-chunk-cookie-1" target="blank">Chocolate Chunk Cookie</a>
-                    <h2>370 Cal</h2>
-                </div>
-                <div class="chicken">
-                    <img src="img/Shake.png" alt="Milk Shake" style="width: 100%;">
-                    <a href="https://www.chick-fil-a.com/menu/vanilla-milkshake" target="blank">Milk Shake</a>
-                    <h2>580 Cal</h2>
-                </div>
-            </div>
-        </div>
-
+  {{/each}}
+    
      <div class="notice">
          <p>This is only the good stuff. Not all menu items are shown.</p>
     </div>
