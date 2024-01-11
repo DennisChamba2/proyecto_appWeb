@@ -9,8 +9,8 @@ const app = express();
 
 // SSL credentials
 const server = https.createServer({
-    cert: fs.readFileSync('cert.pem'),
-    key: fs.readFileSync('key.pem')
+    cert: fs.readFileSync('../secrets/cert.pem'),
+    key: fs.readFileSync('../secrets/key.pem')
   }, app);
   
 
