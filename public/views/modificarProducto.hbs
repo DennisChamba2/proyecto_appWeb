@@ -22,7 +22,8 @@
     </div>
 
     <div class="form-container">
-        <h1>Ingresa un Nuevo Producto</h1>
+        <h1>Modificar Producto</h1>
+        <input type="hidden" id="platilloId" name="platilloId" value="{{producto.ide}}">
         <form action="#" method="post" id="formulario"  enctype="multipart/form-data">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required value="{{producto.nombre}}">
@@ -34,7 +35,7 @@
             <textarea id="descripcion" name="descripcion" rows="4" required >{{producto.descripcion}}</textarea>
 
             <label for="foto">Foto:</label>
-            <input type="file" id="foto" name="foto" accept="image/*" required src="{{producto.foto}}" onchange="mostrarImagenSeleccionada()">
+            <input type="file" id="foto" name="foto" accept="image/*" required onchange="mostrarImagenSeleccionada()">
             <div id="vistaPrevia"></div>
             <button type="submit" id="enviarBtn">Agregar Producto</button>
         </form>
