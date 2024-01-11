@@ -1,5 +1,17 @@
 const db = require("./firebase");
 
+const bcrypt = require('bcryptjs');
+
+async function encryptPassword(password) {
+    // Genera un salt aleatorio con 10 rondas de hashing
+    const salt = await bcrypt.genSalt(10);
+  
+    // Encripta la contraseña con el salt
+    const hashedPassword = await bcrypt.hash(password, salt);
+  
+    return hashedPassword;
+  }
+  
 async function obtenerPlatillos() {
     try {
         // Obtener una referencia a la colección "platillos"
@@ -11,10 +23,12 @@ async function obtenerPlatillos() {
             precio: 10.99,
             foto:"dasdad"
         };
+        
+        const encryptedPassword = await encryptPassword("123456");
 
         const usuario={
             usuario:"dennis",
-            password:"123456"
+            password:encryptedPassword
         }
         await db.collection("usuariosAdmin").add(usuario)
 
@@ -27,8 +41,8 @@ async function obtenerPlatillos() {
         
         // const platillosSnapshot = (await db.collection("platillos").get());;
 
-        const credenciales = await (db.collection("usuariosAdmin").get())
-        console.log(credenciales.docs[0].data());
+        //const credenciales = await (db.collection("usuariosAdmin").get())
+        //console.log(credenciales.docs[0].data());
         // platillosSnapshot.docs.forEach((x)=>{
         //     console.log(x.data());
         //     console.log(x.id);

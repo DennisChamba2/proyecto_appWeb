@@ -1,6 +1,20 @@
 const db = require("../models/firebase");
 const { response, request } = require("express");
 const path = require("path");
+const bcrypt = require('bcryptjs');
+
+async function encryptPassword(password) {
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+  return hashedPassword;
+}
+
+// Función para verificar si una contraseña coincide
+async function verifyPassword(inputPassword, hashedPassword) {
+  return await bcrypt.compare(inputPassword, hashedPassword);
+}
+
+
 
 const general = (req = request, res = response) => {
   res.render("../public/views/index.hbs");
@@ -167,7 +181,10 @@ const autenticacion = async(req = request, res = response)=>{
     const consulta = await (db.collection("usuariosAdmin").get())
     const credenciales= consulta.docs[0].data()
 
-    if (username === credenciales.usuario && password === credenciales.password ){
+    // Verificar si la contraseña proporcionada coincide con la contraseña almacenada
+    const isPasswordValid = await bcrypt.compare(password, credenciales.password);
+
+    if (username === credenciales.usuario && isPasswordValid ){
       res.send("1")
     }else{
       res.send("0")
