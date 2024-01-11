@@ -6,8 +6,22 @@ const general = (req = request, res = response) => {
   res.render("../public/views/index.hbs");
 };
 
-const menu = (req = request, res = response) => {
-  res.render("../public/views/menu.hbs");
+const menu = async(req = request, res = response) => {
+  const platillosSnapshot = await db.collection("platillos").get()
+  const platillos = []
+
+
+  platillosSnapshot.forEach((doc) => {
+    platillos.push(doc.data());
+  });
+
+  // Agrupar los platillos en grupos de tres
+  const platillosGrupos = [];
+  for (let i = 0; i < platillos.length; i += 3) {
+    platillosGrupos.push(platillos.slice(i, i + 3));
+  }
+
+  res.render("../public/views/menu.hbs", {platillosGrupos});
 };
 
 const about = (req = request, res = response) => {
@@ -27,7 +41,8 @@ const registroFormulario = async (req = request, res = response) => {
   const { foto } = req.files;
 
   //mover archivos cargados a carpeta updates
-  const uploadPath = path.join(__dirname, "../updates", foto.name);
+  const uploadPath = path.join(__dirname, "../public/updates", foto.name);
+  const uploadPathFire = path.join("../updates", foto.name);
 
   foto.mv(uploadPath, (err) => {
     if (err) {
@@ -40,13 +55,13 @@ const registroFormulario = async (req = request, res = response) => {
       nombre: nombre,
       precio: Number(precio),
       descripcion: descripcion,
-      foto: img,
+      foto: img.replace(/\\/g, "/"),
     };
     await db.collection("platillos").add(platilloNuevo);
   };
 
   try {
-    await carga(nombre, precio, uploadPath, descripcion);
+    await carga(nombre, precio, uploadPathFire, descripcion);
     res.header('Content-Type', 'application/json').send({ success: true });
 
   } catch (error) {
