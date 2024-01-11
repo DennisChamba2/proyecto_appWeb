@@ -4,7 +4,8 @@ const { general, menu,
   signup, registroFormulario,
    menuAdmin, borrarMenu,
   mostrarProducto, modificarProducto,
-  chat, login, autenticacion} = require("../controllers/index.controllers");
+  chat, login, autenticacion,
+  registro, registroUsuario} = require("../controllers/index.controllers");
 
 const router = Router()
 
@@ -35,5 +36,10 @@ const router = Router()
   //login
   router.get("/login", login )
   router.post("/login", autenticacion )
+
+  //registro
+  router.get("/registro", registro )
+  router.post("/registro", registroUsuario )
+
 
 module.exports = router

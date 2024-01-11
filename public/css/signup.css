@@ -1,7 +1,5 @@
-/* Estilos para el formulario de registro de usuario */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
-
 
 * {
     margin: 0;
@@ -9,9 +7,6 @@
     box-sizing: border-box;
     font-family: 'Roboto Condensed', sans-serif;
 }
-
-
-
 
 html {
     scroll-behavior: smooth;
@@ -55,14 +50,18 @@ html {
     margin: 50px;
 }
 
-
 form {
-    width: 50%;
-    max-width: 300px;
+    width: 60%;
+    max-width: 500px;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form h1 {
+    margin-bottom: 20px;
+    color: #182541;
 }
 
 form label {
@@ -71,10 +70,7 @@ form label {
     margin-bottom: 5px;
 }
 
-
-
 form input,
-form textarea,
 form button {
     width: 100%;
     padding: 10px;
@@ -123,48 +119,4 @@ form button:hover {
 
 .fab:hover {
     transform: scale(1.5);
-}
-
-form {
-    width: 170%;
-    /* Aumentamos el ancho del formulario */
-    max-width: 600px;
-    /* Establecemos un máximo para evitar que sea excesivamente ancho */
-    background-color: #fff;
-    padding: 30px;
-    margin-left: 180;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-form label {
-    color: #182541;
-    font-weight: 700;
-    margin-bottom: 10px;
-    display: block;
-}
-
-form input[type="text"],
-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-form button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: #E51636;
-    color: #fff;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #182541;
 }

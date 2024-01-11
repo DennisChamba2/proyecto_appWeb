@@ -178,9 +178,18 @@ const login = (req = request, res = response)=>{
 const autenticacion = async(req = request, res = response)=>{
   const { username, password } = req.body;
   try {
-    const consulta = await (db.collection("usuariosAdmin").get())
-    const credenciales= consulta.docs[0].data()
+    // Buscar credenciales basadas en el nombre de usuario
+    const consulta = await db.collection("usuariosAdmin").where("usuario", "==", username).get();
 
+    if (consulta.empty) {
+        console.log("No se encontraron credenciales para el usuario:", username);
+        res.send("0");
+        return;
+    }
+
+    // Obtener las credenciales del primer documento coincidente
+    const credenciales = consulta.docs[0].data();
+    
     // Verificar si la contraseña proporcionada coincide con la contraseña almacenada
     const isPasswordValid = await bcrypt.compare(password, credenciales.password);
 
@@ -195,7 +204,43 @@ const autenticacion = async(req = request, res = response)=>{
   }
 }
 
+const registro = (req = request, res = response)=>{
+  res.render("../public/views/signup.hbs")
+}
 
+const registroUsuario = async(req = request, res = response)=>{
+  const { username, password, confirm_password } = req.body;
+  try {
+
+    if(password != confirm_password){
+      res.send("2")
+    }
+    
+    const carga = async (usuario, password) => {
+
+      const encryptedPassword = await encryptPassword(password);
+
+      const usuarioNuevo = {
+        nombre: usuario,
+        password: encryptedPassword
+      };
+
+      await db.collection("usuariosAdmin").add(usuarioNuevo);
+    };
+
+    try {
+      await carga(username, password);
+      res.send("1")
+  
+    } catch (error) {
+      res.send("0")
+    }
+  
+
+  } catch (error) {
+    res.send("0")
+  }
+}
 
 module.exports = {
   general,
@@ -210,5 +255,7 @@ module.exports = {
   modificarProducto,
   chat, 
   login,
-  autenticacion
+  autenticacion,
+  registro,
+  registroUsuario
 };
