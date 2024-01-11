@@ -1,58 +1,64 @@
 /* Estilos para el formulario de registro de usuario */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 180vh;
+    background-color: #f4f4f4;
 }
 
-.signup-container {
+form {
+    width: 170%; /* Aumentamos el ancho del formulario */
+    max-width: 600px; /* Establecemos un máximo para evitar que sea excesivamente ancho */
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 30px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
 }
 
-h1 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-label {
+form label {
+    color: #182541;
+    font-weight: 700;
+    margin-bottom: 10px;
     display: block;
-    margin-bottom: 5px;
-    color: #555;
 }
 
-input[type="text"],
-input[type="password"] {
+form input[type="text"],
+form input[type="password"] {
     width: 100%;
-    padding: 8px;
-    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
-    box-sizing: border-box;
+    border-radius: 5px;
 }
 
-button {
-    padding: 10px 20px;
+form button {
+    width: 100%;
+    padding: 12px;
     border: none;
-    background-color: #28a745;
+    border-radius: 5px;
+    background-color: #E51636;
     color: #fff;
-    border-radius: 4px;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #218838;
+form button:hover {
+    background-color: #182541;
 }
