@@ -34,8 +34,8 @@
             <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
 
             <label for="foto">Foto:</label>
-            <input type="file" id="foto" name="foto" accept="image/*" required>
-
+            <input type="file" id="foto" name="foto" accept="image/*" required onchange="mostrarImagenSeleccionada()">
+            <div id="vistaPrevia"></div>
             <button type="submit" id="enviarBtn">Agregar Producto</button>
         </form>
     </div>
