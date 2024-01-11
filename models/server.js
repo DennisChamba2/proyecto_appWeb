@@ -46,7 +46,7 @@ class Server {
   routes() {
 
     this.app.use(this.RoutePath, require('../routes/index.routes'))
-
+ 
   }
 
   listen() {

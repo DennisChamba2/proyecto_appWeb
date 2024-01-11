@@ -104,8 +104,6 @@ const borrarMenu = async(req=request, res=response)=>{
   }
 }
 
-
-
 const mostrarProducto = async(req=request, res=response)=>{
   const {id} = req.params   
   try {
@@ -121,7 +119,6 @@ const mostrarProducto = async(req=request, res=response)=>{
   }
 
 }
-
 
 const modificarProducto = async (req = request, res = response) => {
   const {id} = req.params
@@ -160,7 +157,9 @@ const modificarProducto = async (req = request, res = response) => {
 
 };
 
-
+const login = (req = request, res = response)=>{
+  res.render("../public/views/login.hbs")
+}
 
 
 module.exports = {
@@ -174,5 +173,6 @@ module.exports = {
   borrarMenu,
   mostrarProducto, 
   modificarProducto,
-  chat
+  chat, 
+  login
 };
